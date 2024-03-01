@@ -1,0 +1,13 @@
+server {
+        server_name samplesiteurl.com;
+        location / {
+		if ($http_user_agent ~* Chrome) {
+	    		# Return 599 Forbidden
+	    		return 499;
+       		}	
+                root /samplepath-for-other-browsers/;
+		try_files $uri $uri/ /index.html;
+	}
+    listen 80;
+}
+
